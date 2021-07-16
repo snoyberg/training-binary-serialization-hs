@@ -1,14 +1,14 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module BuilderSpec (spec) where
 
-import Test.Hspec
-import Test.Hspec.QuickCheck
-import RIO
-import qualified RIO.ByteString.Lazy as BL
-import Builder
-import Data.ByteString.Builder (toLazyByteString)
-import Helper ()
-import qualified RIO.Vector as V
+import           Builder
+import           Data.ByteString.Builder (toLazyByteString)
+import           Helper                  ()
+import           RIO
+import qualified RIO.ByteString.Lazy     as BL
+import qualified RIO.Vector              as V
+import           Test.Hspec
+import           Test.Hspec.QuickCheck
 
 spec :: Spec
 spec = describe "Builder" $ do

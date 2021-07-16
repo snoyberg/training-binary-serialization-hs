@@ -1,12 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE RecordWildCards   #-}
 module Builder (builder) where
 
-import RIO
-import Types
-import Data.ByteString.Builder (word8, byteString, word64BE)
-import qualified RIO.Vector as V
-import qualified RIO.ByteString as B
+import           Data.ByteString.Builder (byteString, word64BE, word8)
+import           RIO
+import qualified RIO.ByteString          as B
+import qualified RIO.Vector              as V
+import           Types
 
 builder :: Vector Score -> Builder
 builder v = word64BE (fromIntegral (V.length v)) <> foldMap single v
@@ -26,5 +26,5 @@ text t =
 -- | Encode a maybe value by putting an extra byte in front. If it's 0, it's a
 -- maybe. If it's 1, it's Just and is followed by the value.
 encodeMaybe :: (a -> Builder) -> Maybe a -> Builder
-encodeMaybe _ Nothing = word8 0
+encodeMaybe _ Nothing  = word8 0
 encodeMaybe f (Just x) = word8 1 <> f x

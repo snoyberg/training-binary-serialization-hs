@@ -1,13 +1,13 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module AttoparsecSpec (spec) where
 
-import Test.Hspec
-import Test.Hspec.QuickCheck
-import RIO
-import Attoparsec
-import Builder
-import Data.ByteString.Builder (toLazyByteString)
-import Helper ()
+import           Attoparsec
+import           Builder
+import           Data.ByteString.Builder (toLazyByteString)
+import           Helper                  ()
+import           RIO
+import           Test.Hspec
+import           Test.Hspec.QuickCheck
 
 spec :: Spec
 spec = describe "Attoparsec" $ do

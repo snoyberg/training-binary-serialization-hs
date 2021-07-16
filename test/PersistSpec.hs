@@ -1,14 +1,14 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module PersistSpec (spec) where
 
-import Test.Hspec
-import Test.Hspec.QuickCheck
-import RIO
-import qualified RIO.ByteString.Lazy as BL
-import Persist
-import Builder
-import Data.ByteString.Builder (toLazyByteString)
-import Helper ()
+import           Builder
+import           Data.ByteString.Builder (toLazyByteString)
+import           Helper                  ()
+import           Persist
+import           RIO
+import qualified RIO.ByteString.Lazy     as BL
+import           Test.Hspec
+import           Test.Hspec.QuickCheck
 
 spec :: Spec
 spec = describe "Persist" $ do

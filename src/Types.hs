@@ -3,11 +3,11 @@ module Types
   ( Score (..)
   ) where
 
-import RIO
+import           RIO
 
 data Score = Score
   { firstName :: !Text
-  , lastName :: !Text
-  , value :: !(Maybe Word8)
+  , lastName  :: !Text
+  , value     :: !(Maybe Word8)
   }
   deriving (Show, Eq)

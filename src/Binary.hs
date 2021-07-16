@@ -1,19 +1,19 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE RecordWildCards   #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Binary
   ( binaryEncode
   , binaryDecode
   ) where
 
-import RIO
-import Types
-import Data.Binary
-import Data.Binary.Get
-import Data.Binary.Put
-import qualified RIO.ByteString as B
+import           Data.Binary
+import           Data.Binary.Get
+import           Data.Binary.Put
+import           Data.Vector.Binary  ()
+import           RIO
+import qualified RIO.ByteString      as B
 import qualified RIO.ByteString.Lazy as BL
-import Data.Vector.Binary ()
+import           Types
 
 binaryEncode :: Vector Score -> LByteString
 binaryEncode = encode
@@ -37,7 +37,7 @@ putText t = do
   putByteString bs
 
 putMaybeWord8 :: Maybe Word8 -> Put
-putMaybeWord8 Nothing = putWord8 0
+putMaybeWord8 Nothing  = putWord8 0
 putMaybeWord8 (Just x) = putWord8 1 *> putWord8 x
 
 getText :: Get Text
@@ -45,7 +45,7 @@ getText = do
   len <- getWord64be
   bs <- getByteString $ fromIntegral len
   case decodeUtf8' bs of
-    Left e -> fail $ "Invalid Utf8: " ++ show e
+    Left e  -> fail $ "Invalid Utf8: " ++ show e
     Right t -> pure t
 
 getMaybeWord8 :: Get (Maybe Word8)

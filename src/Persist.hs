@@ -1,5 +1,5 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE RecordWildCards     #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Persist
@@ -7,12 +7,12 @@ module Persist
   , persistDecode
   ) where
 
-import RIO
-import Types
-import Data.Persist
-import qualified RIO.ByteString as B
-import qualified RIO.Vector as V
-import Data.Vector.Binary ()
+import           Data.Persist
+import           Data.Vector.Binary ()
+import           RIO
+import qualified RIO.ByteString     as B
+import qualified RIO.Vector         as V
+import           Types
 
 persistEncode :: Vector Score -> ByteString
 persistEncode = encode . Scores
@@ -42,7 +42,7 @@ putText t = do
   putByteString bs
 
 putMaybeWord8 :: Maybe Word8 -> Put ()
-putMaybeWord8 Nothing = put (0 :: Word8) -- no endianness choice for Word8
+putMaybeWord8 Nothing  = put (0 :: Word8) -- no endianness choice for Word8
 putMaybeWord8 (Just x) = put (1 :: Word8) *> put x
 
 getText :: Get Text
@@ -50,7 +50,7 @@ getText = do
   len :: Word64 <- getBE
   bs <- getBytes $ fromIntegral len
   case decodeUtf8' bs of
-    Left e -> fail $ "Invalid Utf8: " ++ show e
+    Left e  -> fail $ "Invalid Utf8: " ++ show e
     Right t -> pure t
 
 getMaybeWord8 :: Get (Maybe Word8)

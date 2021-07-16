@@ -1,14 +1,14 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE RecordWildCards   #-}
 module Attoparsec (attoparsec) where
 
-import RIO
-import Types
-import Data.Attoparsec.ByteString as A
-import Data.Conduit.Attoparsec as A
-import Conduit
-import Data.Attoparsec.Binary
-import qualified RIO.Vector as V
+import           Conduit
+import           Data.Attoparsec.Binary
+import           Data.Attoparsec.ByteString as A
+import           Data.Conduit.Attoparsec    as A
+import           RIO
+import qualified RIO.Vector                 as V
+import           Types
 
 attoparsec :: LByteString -> Either ParseError (Vector Score)
 attoparsec = parseLazy (parser <* endOfInput)

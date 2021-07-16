@@ -1,13 +1,13 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module BinarySpec (spec) where
 
-import Test.Hspec
-import Test.Hspec.QuickCheck
-import RIO
-import Binary
-import Builder
-import Data.ByteString.Builder (toLazyByteString)
-import Helper ()
+import           Binary
+import           Builder
+import           Data.ByteString.Builder (toLazyByteString)
+import           Helper                  ()
+import           RIO
+import           Test.Hspec
+import           Test.Hspec.QuickCheck
 
 spec :: Spec
 spec = describe "Binary" $ do
