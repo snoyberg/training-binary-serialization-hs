@@ -9,6 +9,7 @@ dependencies:
 - conduit
 - conduit-extra
 - attoparsec-binary
+- vector-binary-instances
 
 library:
   source-dirs: src
