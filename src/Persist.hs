@@ -11,7 +11,6 @@ import RIO
 import Types
 import Data.Persist
 import qualified RIO.ByteString as B
-import qualified RIO.ByteString.Lazy as BL
 import qualified RIO.Vector as V
 import Data.Vector.Binary ()
 

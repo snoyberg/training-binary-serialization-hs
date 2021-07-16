@@ -5,7 +5,6 @@ module Attoparsec (attoparsec) where
 import RIO
 import Types
 import Data.Attoparsec.ByteString as A
-import qualified RIO.ByteString.Lazy as BL
 import Data.Conduit.Attoparsec as A
 import Conduit
 import Data.Attoparsec.Binary
@@ -38,4 +37,4 @@ maybeWord8 = do
 
 -- | Should ideally be provided by attoparsec itself
 parseLazy :: Parser a -> LByteString -> Either ParseError a
-parseLazy parser lbs = runConduitPure $ sourceLazy lbs .| sinkParserEither parser
+parseLazy parser' lbs = runConduitPure $ sourceLazy lbs .| sinkParserEither parser'

@@ -9,7 +9,6 @@ import Persist
 import Builder
 import Data.ByteString.Builder (toLazyByteString)
 import Helper ()
-import qualified RIO.Vector as V
 
 spec :: Spec
 spec = describe "Persist" $ do

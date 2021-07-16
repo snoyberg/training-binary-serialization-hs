@@ -13,7 +13,6 @@ import Data.Binary.Get
 import Data.Binary.Put
 import qualified RIO.ByteString as B
 import qualified RIO.ByteString.Lazy as BL
-import qualified RIO.Vector as V
 import Data.Vector.Binary ()
 
 binaryEncode :: Vector Score -> LByteString
@@ -23,8 +22,8 @@ binaryDecode :: LByteString -> Either String (Vector Score)
 binaryDecode lbs =
   case decodeOrFail lbs of
     Left (_, _, msg) -> Left msg
-    Right (remaining, _, result)
-      | BL.null remaining -> Right result
+    Right (remainder, _, result)
+      | BL.null remainder -> Right result
       | otherwise -> Left "unconsumed input"
 
 instance Binary Score where
