@@ -1,0 +1,21 @@
+name: encoding
+
+dependencies:
+- base
+- rio
+- bytestring
+- binary
+- attoparsec
+
+library:
+  source-dirs: src
+
+tests:
+  encoding-test:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+    - encoding
+    - hspec
+    - QuickCheck
+    - quickcheck-instances
