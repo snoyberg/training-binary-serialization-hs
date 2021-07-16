@@ -6,6 +6,9 @@ dependencies:
 - bytestring
 - binary
 - attoparsec
+- conduit
+- conduit-extra
+- attoparsec-binary
 
 library:
   source-dirs: src
